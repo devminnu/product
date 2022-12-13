@@ -13,13 +13,13 @@ phases:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI
   build:
     commands:
-      - build started on `date`
+      - echo build started on `date`
       - docker build --build-arg GITHUB_TOKEN=$GITHUB_TOKEN --build-arg ACCOUNT_ID=$ACCOUNT_ID -t $REPOSITORY_URI:latest .
   post_build:
     commands:
       - echo build completed on `date`
       - docker push $REPOSITORY_URI:latest
-      - writing image definition file ...
+      - echo writing image definition file ...
       - printf '[{"name":"quote-service","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
