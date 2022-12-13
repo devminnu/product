@@ -1,4 +1,4 @@
-ARG  BUILDER_IMAGE=golang:alpine
+ARG  BUILDER_IMAGE=354083722736.dkr.ecr.us-east-1.amazonaws.com/golang-alpine:latest
 ############################
 # STEP 1 build executable binary
 ############################
