@@ -1,10 +1,13 @@
 version: 0.2
+env:
+  secrets-manager:
+    GITHUB_TOKEN: devminnu_github_token:GITHUB_TOKEN
 
 phases:
   pre_build:
     commands:
       - go version
-      # - git config --global url."https://$GITHUB_TOKEN@github.com".insteadOf "https://github.com"
+      - git config --global url."https://$GITHUB_TOKEN@github.com".insteadOf "https://github.com"
       - ACCOUNT_ID=$(aws sts get-caller-identity --output text --query 'Account')
       - REPOSITORY_URI=$ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/product-service
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI
