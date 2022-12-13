@@ -1,0 +1,18 @@
+syntax="proto3";
+package product;
+option go_package="api/grpc/protogen/product";
+
+service Product {
+    rpc AddProduct(AddProductRequest) returns (AddProductResponse);
+    // rpc GetProduct(ProductID) returns (Product);
+}
+
+message AddProductRequest {
+    string name=2;
+    string description=3;
+}
+
+message AddProductResponse {
+    string id=1;
+}
+
