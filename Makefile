@@ -26,3 +26,8 @@ proto:
 	--go-grpc_out=./ \
 	--go-grpc_opt=paths=import \
 	./api/grpc/proto/*/*.proto
+
+# grpcurl -plaintext 54.237.88.89:50051 describe
+grpcurl -plaintext localhost:50051 describe
+grpcurl -plaintext 18.204.220.190:50051 describe
+grpcurl -plaintext product-service-alb-1796865760.us-east-1.elb.amazonaws.com:50051 describe
